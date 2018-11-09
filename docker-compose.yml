@@ -1,20 +1,21 @@
-version: '2'
+version: '3'
 services:
 ### NGINX ##################################
   nginx:
-    image: "nginx:alpine"
+    image: nginx:alpine
     ports:
-      - "8080:80"
-    restart: "always"
+    - "800:80"
     volumes:
-      - "./web/default.conf:/etc/nginx/conf.d/default.conf"
-    links:
-      - "php7"
+    - ./nginx/laravel.conf:/etc/nginx/conf.d/default.conf
+    - ~/Project/incomelimit/src:/var/www
+    depends_on:
+    - php-fpm
+
 ### PHP-FPM ##################################
-  phpfpm:
-    image: php:7.2.11-fpm-alpine3.8
+  php-fpm:
+    build: ./php-fpm/
     volumes:
-      - "~/path/to/dir/:/var/www/html/"
+      - ~/Project/incomelimit/src/:/var/www/
     links:
       - mysql
     depends_on:
@@ -31,8 +32,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=wakana
-
-networks:
-  proxy_net:
-    external:
-      name: proxy_net
