@@ -32,3 +32,16 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=wakana
+
+### NODE ##################################
+  node:
+    image: "node:alpine"
+    user: "node"
+    working_dir: ~/Project/incomelimit/src
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ~/Project/incomelimit/src:/home/node/app
+    expose:
+      - "8081"
+    command: "npm start"
