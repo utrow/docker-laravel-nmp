@@ -32,9 +32,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=wakana
-
-### NODE ##################################
-  node:
-    image: node:9.11.1-alpine
-    volumes:
-      - ~/Project/incomelimit/src:/app
