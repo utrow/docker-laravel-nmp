@@ -3,7 +3,7 @@
 FROM node:9.11.1-alpine
 
 # カレントワーキングディレクトリとして 'app' フォルダを指定する
-WORKDIR /home/buchitaro1022/Project/incomelimit
+WORKDIR /home/buchitaro1022/Project/incomelimit/src
 
 # プロジェクトの依存ライブラリをインストールする
 RUN npm install
