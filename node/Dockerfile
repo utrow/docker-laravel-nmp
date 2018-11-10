@@ -3,10 +3,7 @@
 FROM node:9.11.1-alpine
 
 # カレントワーキングディレクトリとして 'app' フォルダを指定する
-WORKDIR /app
-
-# `package.json` と `package-lock.json` （あれば）を両方コピーする
-COPY package*.json ./
+WORKDIR /home/buchitaro1022/Project/incomelimit
 
 # プロジェクトの依存ライブラリをインストールする
 RUN npm install
