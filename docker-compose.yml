@@ -35,6 +35,6 @@ services:
 
 ### NODE ##################################
   node:
-    build: ./node
+    image: node:9.11.1-alpine
     volumes:
       - ~/Project/incomelimit/src:/app
