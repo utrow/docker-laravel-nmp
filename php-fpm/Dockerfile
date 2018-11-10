@@ -24,5 +24,7 @@ WORKDIR /var/www
 RUN composer global require "laravel/installer"
 
 # NODE
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN apt-get install -y nodejs npm
+RUN apt-get update \
+  && apt-get install -my wget gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+  && apt-get install -y nodejs
