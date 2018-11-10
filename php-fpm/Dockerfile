@@ -26,5 +26,4 @@ RUN composer global require "laravel/installer"
 # NODE
 RUN apt-get update \
   && apt-get install -my wget gnupg
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
-  && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
