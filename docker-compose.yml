@@ -11,7 +11,10 @@ services:
     depends_on:
     - php-fpm
     environment:
-      - VIRTUAL_HOST=incomelimit
+      - VIRTUAL_HOST=gcp.tawn.work
+      - VIRTUAL_PORT=801
+      - LETSENCRYPT_HOST: cp.tawn.work
+      - LETSENCRYPT_EMAIL: buchitaro@live.jp
 
 ### PHP-FPM ##################################
   php-fpm:
