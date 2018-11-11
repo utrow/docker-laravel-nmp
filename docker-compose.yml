@@ -13,8 +13,8 @@ services:
     environment:
       - VIRTUAL_HOST=gcp.tawn.work
       - VIRTUAL_PORT=801
-      - LETSENCRYPT_HOST: cp.tawn.work
-      - LETSENCRYPT_EMAIL: buchitaro@live.jp
+      - LETSENCRYPT_HOST=gcp.tawn.work
+      - LETSENCRYPT_EMAIL=buchitaro@live.jp
     networks:
       - shared-nginx
 
