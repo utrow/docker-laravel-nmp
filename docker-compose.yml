@@ -16,7 +16,8 @@ services:
       - LETSENCRYPT_HOST=gcp.tawn.work
       - LETSENCRYPT_EMAIL=buchitaro@live.jp
     networks:
-      - shared-nginx
+      - web_nw
+      - internal_nw
 
 ### PHP-FPM ##################################
   php-fpm:
@@ -32,13 +33,16 @@ services:
       - DB_DATABASE=wakana
       - DB_USERNAME=root
       - DB_PASSWORD=pass
-
+    networks:
+      - internal_nw
 ### MYSQL ##################################
   mysql:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=wakana
+    networks:
+      - internal_nw
 networks:
   web_nw:
     external:
