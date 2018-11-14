@@ -30,17 +30,17 @@ services:
       - mysql
     environment:
       - DB_HOST=mysql
-      - DB_DATABASE=wakana
-      - DB_USERNAME=root
-      - DB_PASSWORD=pass
+      - DB_DATABASE=incomelimit
+      - DB_USERNAME=il_Tq6wSGtg
+      - DB_PASSWORD=NZ55WcvvynHe
     networks:
       - internal_nw
 ### MYSQL ##################################
   mysql:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_DATABASE=wakana
+      - MYSQL_ROOT_PASSWORD=NZ55WcvvynHe
+      - MYSQL_DATABASE=incomelimit
     networks:
       - internal_nw
 networks:
