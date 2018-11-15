@@ -27,7 +27,7 @@ services:
     volumes:
       - ~/Project/incomelimit/src/:/var/www/
     links:
-      - mysql
+      - mysql:mysql
     depends_on:
       - mysql
     environment:
