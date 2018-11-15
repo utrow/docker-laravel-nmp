@@ -1,3 +1,5 @@
+# docker network create -d bridge shared-nginx
+
 version: '3'
 services:
 ### NGINX ##################################
@@ -38,14 +40,25 @@ services:
 ### MYSQL ##################################
   mysql:
     image: mysql:5.7
+    ports:
+      - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=NZ55WcvvynHe
       - MYSQL_DATABASE=incomelimit
+      - MYSQL_ROOT_PASSWORD=NZ55WcvvynHe
+      - MYSQL_USER=il_Tq6wSGtg
+      - MYSQL_PASSWORD=NZ55WcvvynHe
     networks:
       - internal_nw
+    volumes:
+      - mysql-db:/var/lib/mysql:rw
+      - ./mysql:/docker-entrypoint-initdb.d/:ro
+
+### INTERFACE ###############################
 networks:
   web_nw:
     external:
       name: shared-nginx
   internal_nw:
     external: false
+volumes:
+  mysql-db:
