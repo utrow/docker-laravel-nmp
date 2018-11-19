@@ -1,5 +1,4 @@
 FROM php:7.2-fpm
-COPY php.ini /usr/local/etc/php/
 
 RUN apt-get update \
   && apt-get install -y zlib1g-dev mysql-client \
@@ -30,3 +29,22 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -
 
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
+
+# Final
+
+COPY ./laravel.ini /usr/local/etc/php/conf.d
+
+USER root
+
+# Clean up
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm /var/log/lastlog /var/log/faillog
+
+RUN usermod -u 1000 www-data
+
+WORKDIR /var/www
+
+CMD ["php-fpm"]
+
+EXPOSE 9000
